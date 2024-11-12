@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Brawl</title>
+    <!-- Import Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&display=swap">
+
+    <style>
+        /* Light mode (default) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            flex-direction: column;
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('c:/Users/Andriy/Downloads/icons8-brawl-stars-100.png');
+            background-size: 100px 100px;
+            background-repeat: repeat;
+            animation: moveBackground 25s linear infinite;
+        }
+
+        /* Dark mode */
+        body.dark-mode {
+            background-color: #222222;
+            color: #f9f9f9;
+        }
+
+        /* Background animation */
+        @keyframes moveBackground {
+            from {
+                background-position: 0 500px;
+            }
+
+            to {
+                background-position: 500px 0;
+            }
+        }
+
+        /* Container for main content */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Header with new font */
+        .header {
+            font-family: 'Bungee', sans-serif;
+            background-color: #d3d3d3;
+            padding: 60px;
+            font-size: 4em;
+            font-weight: bold;
+            border-radius: 40px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Dark mode for header */
+        .header.dark-mode {
+            background-color: #1b1b1b;
+            color: #f9f9f9;
+        }
+
+        /* Cards section */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            justify-items: center;
+        }
+
+        .card {
+            background-color: #d3d3d3;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #333;
+            cursor: pointer;
+            width: 250px;
+            height: 250px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+
+        .card img {
+            width: 70%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Popup styling */
+        .popup {
+              display: none;
+              position: fixed;
+              top: 50%; /* Center vertically */
+              left: 50%; /* Center horizontally */
+              transform: translate(-50%, 50%); /* Start slightly below center */
+               width: 80%;
+               max-width: 600px;
+               background-color: #333;
+               color: #1b1b1b;
+               padding: 20px;
+               border-radius: 10px;
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+               z-index: 10;
+               text-align: left;
+               transition: transform 1s ease-out, background-color 0.3s, color 0.3s;
+            }
+
+         .popup.show {
+              display: block;
+              transform: translate(-50%, -50%); /* Fully centered when shown */
+            }
+
+
+        .popup img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 1em;
+            color: white;
+        }
+
+        /* Dark mode for popup */
+        .popup.dark-mode {
+            background-color: #333;
+            color: #f9f9f9;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+
+        /* Dark mode styles */
+        .header.dark-mode,
+        .card.dark-mode {
+            background-color: #1b1b1b;
+            color: #f9f9f9;
+        }
+
+        /* Dark mode button styles */
+        .dark-mode-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            background-color: #1b1b1b;
+            color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode-button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<<body>
+
+    <div class="container">
+        <div class="header">Breaking Brawl</div>
+        <div class="cards">
+            <div class="card" onclick="openPopup('Juan Carlos', 'Juan, previously top 1 trophy holder, qualified into BS World Championship and played astonishing plays', 'c:/Users/Andriy/Downloads/JuanCarlos.png')">
+                <img src="c:/Users/Andriy/Downloads/Знімок екрана 2024-11-07 125731.png" alt="Juan Image">
+                <div>Juan Carlos</div>
+            </div>
+            <div class="card" onclick="openPopup('Angels vs Demons', 'Starting November 7 and up until December 5, there will be a new event. Main gimmick: choose to be an angel or demon, gaining special abilities.', 'c:/Users/Andriy/Downloads/AngelsVsDemons.png')">
+                <img src="c:/Users/Andriy/Downloads/Знімок екрана 2024-11-07 173205.png" alt="Event Image">
+                <div>NEW EVENT</div>
+            </div>
+            <!-- Add more cards here as needed -->
+        </div>
+    </div>
+
+    <!-- Popup content -->
+    <div class="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <img id="popupImage" src="" alt="Popup Image">
+        <h2 id="popupTitle"></h2>
+        <p id="popupDescription"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Dark mode toggle button -->
+    <button class="dark-mode-button" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <script>
+        function openPopup(title, description, imageUrl) {
+                document.getElementById("popupTitle").innerText = title;
+                document.getElementById("popupDescription").innerText = description;
+                document.getElementById("popupImage").src = imageUrl;
+                document.getElementById("popup").classList.add("show");
+                document.querySelector(".overlay").style.display = "block";
+            }
+
+        function closePopup() {
+            document.getElementById("popup").classList.remove("show");
+            document.querySelector(".overlay").style.display = "none";
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            document.querySelector(".header").classList.toggle("dark-mode");
+            document.querySelectorAll(".card").forEach(card => card.classList.toggle("dark-mode"));
+            document.getElementById("popup").classList.toggle("dark-mode");
+
+            const button = document.querySelector(".dark-mode-button");
+            button.innerText = document.body.classList.contains("dark-mode") ? "Light Mode" : "Dark Mode";
+        }
+    </script>
+
+</body>
+
+</html>
